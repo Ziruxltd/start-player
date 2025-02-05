@@ -2,9 +2,12 @@
   <div
     class="app-container"
     @mousedown="handleOnTouch"
-    @mouseup="handleOnLeave">
+    @touchstart="handleOnTouch"
+    @mouseup="handleOnLeave"
+    @touchend="handleOnLeave">
     <div class="circle-container">
-      <CountDown v-if="timer.isRunning" :number="timer.remainingTime" />
+      <h2 v-if="!timer.isTimerRunning()">Touch to start</h2>
+      <CountDown v-if="timer.isTimerRunning()" :number="timer.getTime()" />
     </div>
   </div>
 </template>
